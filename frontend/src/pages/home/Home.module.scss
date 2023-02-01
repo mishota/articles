@@ -1,0 +1,64 @@
+.container {
+  width: 100%;
+  min-width: 350px;
+  position: relative;
+
+  // background: url("../../../assets/images/blueBgPageInvestitions.png") no-repeat
+  //   left 350px / 50%;
+
+  @media screen and (max-width: 1000px) {
+    // background-position: 0 0, 0 600px;
+  }
+  @media screen and (max-width: 600px) {
+    // background-position: 0 0, 0 800px;
+  }
+}
+
+.inner_container {
+  padding: 50px 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  // align-items: center;
+  @media screen and (max-width: 1000px) {
+    padding: 20px 5%;
+  }
+}
+.title {
+    font-weight: 400;
+  font-size: 24px;
+  line-height: 110%;
+  padding-bottom: 5px;
+  @media screen and (max-width: 1000px) {
+  }
+}
+.header {
+  
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 110%;
+  margin-top: 30px;
+}
+
+.deposit_item {
+  width: 100%;
+  display: flex;
+}
+.article_container{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  
+}
+
+.article_item {
+  width: 25%;
+  padding: 20px;
+  min-height: 100px;
+  background: #ffffff;
+  // opacity: 0.6;
+  border: 1px solid #c7c7c7;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}

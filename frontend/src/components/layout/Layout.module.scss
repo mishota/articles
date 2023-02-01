@@ -1,0 +1,25 @@
+.container {
+  width: 100%;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  background: #d8f4ff;
+  background-image: url("../../assets/images/whiteBgLayout.png"),
+    url("../../assets/images/blueBgLayoutInside.png"),
+    url("../../assets/images/lightBlueBgLayoutInside.png"),
+    url("../../assets/images/blueBgAuthBottom.png");
+  background-position: left top, right top, left top, right bottom;
+  background-repeat: no-repeat;
+  background-size: 30% 30% 50% 100%;
+  // @media screen and (max-width: 700px) {
+  //   background-image: url("../../assets/images/whiteBgLayout.png"),
+  //   url("../../assets/images/blueBgLayoutInside.png"),
+  //   url("../../assets/images/lightBlueBgLayoutInside.png"),
+  //   url("../../assets/images/blueBgAuthBottomMobile.png");
+  //   background-position: left top 10px, right top, left top, right bottom;
+  //   background-size: 40% 120px, 40% 130px, 90%, 100%;
+  // }
+}
