@@ -1,0 +1,10 @@
+{
+  "semi": false,
+  "trailingComma": "all",
+  "singleQuote": true,
+  "bracketSpacing": true,
+  "tabWidth": 2,
+  "endOfLine": "auto",
+  "printWidth": 120,
+  "eslint.autoFixOnSave": true
+}
