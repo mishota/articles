@@ -1,5 +1,5 @@
-body{
-    color: #0a4040;
+body {
+  color: #0a4040;
 }
 
 %main_button {
@@ -37,8 +37,27 @@ body{
 }
 
 .green_line {
-    width: 200px;
-    height: 4px;
-    background: #579e8c;
-    border-radius: 20px;
-  }
+  width: 200px;
+  height: 4px;
+  background: #579e8c;
+  border-radius: 20px;
+}
+
+%gray_input {
+  background: #f3f3f3;
+  box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  //   min-height: 54px;
+  width: 100%;
+  font-size: 16px;
+  padding: 10px;
+}
+.gray_input {
+  @extend %gray_input;
+}
+
+.required {
+  color: #f50d62;
+  font-weight: 600;
+  font-size: 14px;
+}
