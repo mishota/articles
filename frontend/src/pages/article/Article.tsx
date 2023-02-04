@@ -14,7 +14,7 @@ export type ArticleType = {
 }
 
 const Article = () => {
-  const { chosenArticle } = useAppSelector((state) => state.articles)
+  const { chosenArticle, isLoading } = useAppSelector((state) => state.articles)
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const { id } = useParams()
@@ -22,6 +22,9 @@ const Article = () => {
   useEffect(() => {
     id && dispatch(getChosenArticle(id))
   }, [id])
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
   return (
     <div className={styles.container}>
       <div className={styles.title}>{chosenArticle.title}</div>

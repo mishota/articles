@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
+import { ArticleForm } from '../../pages/add/Add'
 
 export interface IArticle {
   id: string
@@ -49,10 +50,32 @@ export const getArticles = createAsyncThunk('articles/get', async (_, thunkAPI) 
   }
 })
 
-// Get chosen news
 export const getChosenArticle = createAsyncThunk('article/get', async (id: string, thunkAPI) => {
   try {
     const res = await fetch(`api/articles/${id}`)
+    if (res.ok) {
+      let json = await res.json()
+      return json
+    }
+  } catch (error: any) {
+    return thunkAPI.rejectWithValue('Error at getArticle')
+  }
+})
+
+export const addArticle = createAsyncThunk('article/add', async (data: ArticleForm, thunkAPI) => {
+  try {
+    const rd = {
+      ...data,
+      date: new Date().toLocaleString(),
+    }
+
+    const res = await fetch(`api/articles`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(rd),
+    })
     if (res.ok) {
       let json = await res.json()
       return json
@@ -96,6 +119,19 @@ export const articlesSlice = createSlice({
         state.chosenArticle = action.payload
       })
       .addCase(getChosenArticle.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
+      })
+      .addCase(addArticle.pending, (state) => {
+        state.isLoading = true
+        state.message = ''
+      })
+      .addCase(addArticle.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.articles = [...state.articles, action.payload]
+      })
+      .addCase(addArticle.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
         state.message = action.payload
