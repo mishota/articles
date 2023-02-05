@@ -11,8 +11,7 @@ import styles from './Home.module.scss'
 const itemsPerPage = 3
 
 const Home = () => {
-  // const [articles, setArticles] = useState<ArticleType[]>([])
-  const { articles } = useAppSelector((state) => state.articles)
+  const { articles, isLoading } = useAppSelector((state) => state.articles)
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
@@ -62,25 +61,24 @@ const Home = () => {
           .filter((elem) => +new Date(elem.date) >= +new Date(dateFrom))
           .filter((elem) => +new Date(elem.date) <= +new Date(dateTo)),
       )
-    } else if (!title && !dateFrom && dateTo) {
-      setFilterArticles(articles.filter((elem) => +new Date(elem.date) <= +new Date(dateTo)))
     } else if (!title && dateFrom && !dateTo) {
       setFilterArticles(articles.filter((elem) => +new Date(elem.date) >= +new Date(dateFrom)))
+    } else if (!title && !dateFrom && dateTo) {
+      setFilterArticles(articles.filter((elem) => +new Date(elem.date) <= +new Date(dateTo)))
     } else {
       setFilterArticles(articles)
     }
+    setCurrentPage(1)
   }, [articles, title, dateFrom, dateTo])
-
-  useEffect(() => {
-    //
-  }, [currentPage])
 
   const handleDelete = () => {
     setFilterArticles((filterArticles) => filterArticles.filter((elem) => elem.id !== currentArticle?.id))
     setCurrentArticle(null)
     setIsOpen(false)
   }
-
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
   return (
     <div className={styles.container}>
       <div className={styles.title}>Articles App</div>

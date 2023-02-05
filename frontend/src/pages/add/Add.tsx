@@ -39,6 +39,9 @@ const Add = () => {
 
   return (
     <div className={styles.container}>
+      <button className="main_button" onClick={() => navigate(`/`)} style={{ alignSelf: 'start' }}>
+        BACK
+      </button>
       <div className={styles.title}>Add article</div>
       <div className="green_line" />
       <div className={styles.article_container}>

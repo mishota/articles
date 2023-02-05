@@ -3,6 +3,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: slidein;
+  animation-duration: 3s;
+  animation-timing-function: ease;
+  animation-delay: 0.2s;
 }
 
 .title {
@@ -157,4 +161,16 @@
 .button_cancel {
   @extend %button;
   background: #aca9aa;
+}
+
+@keyframes slidein {
+  from {
+    transform: translateY(400px);
+    opacity: 0%;
+  }
+
+  to {
+    transform: translateY(0%);
+    opacity: 100%;
+  }
 }
