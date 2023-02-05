@@ -29,7 +29,7 @@ const AddComment = ({ id, setComments, setIsAddComment }: PropsType) => {
 
   const onSubmitCommentForm: SubmitHandler<CommentForm> = async (data) => {
     const rd = {
-      user: "currentUser",
+      user: 'currentUser',
       text: data.text,
       article: id,
     }
@@ -56,25 +56,24 @@ const AddComment = ({ id, setComments, setIsAddComment }: PropsType) => {
     <div className={styles.container}>
       <div className={styles.title}>Add comment</div>
       <div className="green_line" />
-      <div className={styles.article_container}>
-        <div className={styles.article_item}>
-          <div>
-            <textarea
-              placeholder="text"
-              className="gray_input"
-              rows={4}
-              {...register('text', {
-                required: 'The field is required!',
-                minLength: {
-                  value: 4,
-                  message: 'Min 4 letters!',
-                },
-              })}
-            />
-            {errors?.text && <div className="required">{errors.text.message || 'Error!'}</div>}
-          </div>
+      <div className={styles.article_item}>
+        <div>
+          <textarea
+            placeholder="text"
+            className="gray_input"
+            rows={4}
+            {...register('text', {
+              required: 'The field is required!',
+              minLength: {
+                value: 4,
+                message: 'Min 4 letters!',
+              },
+            })}
+          />
+          {errors?.text && <div className="required">{errors.text.message || 'Error!'}</div>}
+        </div>
 
-          {/* <div>
+        {/* <div>
             <input
               placeholder="user"
               className="gray_input"
@@ -88,7 +87,6 @@ const AddComment = ({ id, setComments, setIsAddComment }: PropsType) => {
             />
             {errors?.user && <div className="required">{errors.user.message || 'Error!'}</div>}
           </div> */}
-        </div>
       </div>
 
       <button className="main_button" onClick={handleSubmit(onSubmitCommentForm)} disabled={!isValid}>

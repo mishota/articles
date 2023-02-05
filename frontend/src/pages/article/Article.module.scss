@@ -43,6 +43,8 @@
   }
 }
 .comments_container {
+  animation: fadein 1s;
+  overflow: hidden;
   width: 94%;
   padding: 20px;
   margin: 50px 0;
@@ -54,6 +56,7 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
+
   .comments_item {
     width: 100%;
     display: flex;
@@ -77,6 +80,18 @@
 
   to {
     transform: skew(0);
+    opacity: 100%;
+  }
+}
+
+@keyframes fadein {
+  from {
+    transform: translateX(-400px);
+    opacity: 0%;
+  }
+
+  to {
+    transform: translateX(0%);
     opacity: 100%;
   }
 }
